@@ -14,7 +14,7 @@ app.use('/api', Patients);
 mongodb_connect = async () => {
     await mongoose.connect(process.env.MONGODB_URI);
 }
-mongodb_connect();
+mongodb_connect().then(() => console.log('Connected to database'));
 
 app.listen(5000, () => {
     console.log('Server running on port http://localhost:5000/');
