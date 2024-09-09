@@ -22,11 +22,11 @@ const postPatient = async (req, res) => {
             medications: req.body.medications
         })
         await newPatient.save();
+        console.log(`Patient created successfully id: ${newPatient._id}`);
         res.status(201).json({ success: true, msg: 'Patient created successfully' });
     } catch (err) {
-        console.log(err);
+        console.log(err.message);
         res.status(400).json({ success: false, msg: 'Failed to create patient', error: err.message });
-        console.log('Patient created successfully...')
     }
 }
 module.exports = postPatient;

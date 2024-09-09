@@ -11,13 +11,11 @@ dotenv.config();
 
 app.use('/api', Patients);
 
-// dummyData();
-
 mongodb_connect = async () => {
     await mongoose.connect(process.env.MONGODB_URI);
 }
 mongodb_connect();
 
 app.listen(5000, () => {
-    console.log('Server is listening on port 5000...');
+    console.log('Server running on port http://localhost:5000/');
 })
