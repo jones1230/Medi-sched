@@ -1,13 +1,16 @@
 const Patient = require('../models/Patient');
+const Staff = require('../models/HospitalStaff');
 
 const getPatients = async (req, res) => {
-    try {
-        let patients = await Patient.find();
-        await res.status(200).json(patients);
-        console.log('Get /api/patients request success...')
-    } catch (err) {
-        res.status(500).send(err.message);
+    let patients = await Patient.find();
+    let staff = await Staff.findById(req.User.sub);
+    if (req.User.sub == staff._id) {
+        if (req.User.roles == 'Admin') {
+            res.status(200).json(patients);
+            console.log('Get /api/patients request success...');
+        }
     }
+    res.status(401).json({ success: false, msg: 'You are not an Admin' });
 }
 
 const getPatientById = async (req, res) => {

@@ -4,7 +4,7 @@ const dotenv = require('dotenv');
 const app = express();
 const morgan = require('morgan');
 const Patients = require('./routes/Patients');
-const authStaff = require('./routes/authStaff');
+const authStaff = require('./routes/Staff');
 
 app.use(express.json());
 dotenv.config();
