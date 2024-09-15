@@ -6,8 +6,8 @@ const getPatients = async (req, res) => {
     let staff = await Staff.findById(req.User.sub);
     if (req.User.sub == staff._id) {
         if (req.User.roles == 'Admin') {
-            res.status(200).json(patients);
             console.log('Get /api/patients request success...');
+            return res.status(200).json(patients);
         }
     }
     res.status(401).json({ success: false, msg: 'You are not an Admin' });

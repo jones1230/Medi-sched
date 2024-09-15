@@ -4,6 +4,15 @@ const Staff = require('../models/HospitalStaff');
 require('dotenv').config();
 
 
+const generateToken = (user) => {
+    const payload = { sub: user.id, name: user.name, roles: user.role, iat: Date.now() }
+    console.log(payload);
+    const token = jwt.sign(payload, process.env.SECRET_KEY, { expiresIn: '1m' });
+    const refreshToken = jwt.sign(payload, process.env.REFRESH_KEY);
+    return { token, refreshToken }
+}
+
+
 const signUpStaff = async (req, res) => {
     try {
         const staff = await Staff.findOne({ email: req.body.email })
@@ -46,12 +55,11 @@ const loginStaff = async (req, res) => {
     console.log(`User with id: ${user._id} is logged in...`);
     // res.send('Logged in');
 
-    const payload = { sub: user.id, name: user.name, roles: user.role, iat: Date.now(), exp: Date.now() + 3600 }
-    console.log(payload);
-    const token = jwt.sign(payload, process.env.SECRET_KEY);
-    res.header('Authorization', `Bearer ${token}`).json({ Authorization: `Bearer ${token}` });
-
+    const { token, refreshToken } = generateToken(user);
+    res
+    .header('Authorization', `Bearer ${token}`)
+    .cookie('refreshToken', refreshToken, { httpOnly: true, sameSite: 'strict' })
+    .json({ Authorization: `Bearer ${token}`, refreshToken});
 }
 
-
-module.exports = { signUpStaff, loginStaff };
+module.exports = { signUpStaff, loginStaff, generateToken }
