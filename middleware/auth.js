@@ -2,29 +2,43 @@ const jwt = require('jsonwebtoken');
 const blacklistedTokens = require('../models/blacklistTokens');
 require('dotenv').config();
 
+/**
+ * Middleware to authenticate staff using JWT
+ * @param {Object} req - Express request object
+ * @param {Object} res - Express response object
+ * @param {Function} next - Next middleware function
+ * @returns {void}
+ */
 const staffAuthentication = async (req, res, next) => {
     try {
-        console.log(req.get('authorization'))
+        // Retrieve the authorization header
         const authorizationHeader = req.get('authorization');
-        if (authorizationHeader == null) {
-            return res.status(401).json({ success: false, msg: 'Unauthorized access', error: 'missing token' });
+        if (!authorizationHeader) {
+            return res.status(401).json({ success: false, msg: 'Unauthorized access', error: 'Missing token' });
         }
+
+        // Extract token from authorization header
         const token = authorizationHeader.split(' ')[1];
-        const checkIfTokenBlacklisted = await blacklistedTokens.findOne({token});
-        if (checkIfTokenBlacklisted != undefined) return res.status(401).json({success: false, msg: 'Token revoked'});
+
+        // Check if the token is blacklisted
+        const blacklistedToken = await blacklistedTokens.findOne({ token });
+        if (blacklistedToken) {
+            return res.status(401).json({ success: false, msg: 'Token revoked' });
+        }
+
+        // Verify the token
         try {
             const user = jwt.verify(token, process.env.SECRET_KEY);
-            console.log(user);
-            req.User = user;
-            console.log(user)
+            req.User = user; // Attach user info to the request object
+            next(); // Proceed to the next middleware
         } catch (error) {
-            return res.send(error);
+            // Handle token verification errors
+            return res.status(401).json({ success: false, msg: 'Invalid or expired token', error: error.message });
         }
-        next();
     } catch (error) {
-        return res.status(401).json({ success: false, msg: 'Unauthorized access', error: error });
+        // Handle unexpected errors
+        return res.status(401).json({ success: false, msg: 'Unauthorized access', error: error.message });
     }
 }
-
 
 module.exports = staffAuthentication;

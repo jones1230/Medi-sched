@@ -1,8 +1,14 @@
 const Patient = require('../models/Patient');
 
+/**
+ * @route POST /api/patients
+ * @desc Create a new patient record
+ * @access Public
+ */
 const postPatient = async (req, res) => {
     try {
-        const newPatient = await new Patient({
+        // Create a new patient instance with data from the request body
+        const newPatient = new Patient({
             name: req.body.name,
             gender: req.body.gender,
             dob: req.body.dob,
@@ -20,13 +26,19 @@ const postPatient = async (req, res) => {
             relevant_medical_history: req.body.relevant_medical_history,
             allergies: req.body.allergies,
             medications: req.body.medications
-        })
+        });
+
+        // Save the new patient to the database
         await newPatient.save();
+
+        // Log success and respond with a success message
         console.log(`Patient created successfully id: ${newPatient._id}`);
         res.status(201).json({ success: true, msg: 'Patient created successfully' });
     } catch (err) {
+        // Log the error and respond with a failure message
         console.log(err.message);
         res.status(400).json({ success: false, msg: 'Failed to create patient', error: err.message });
     }
 }
+
 module.exports = postPatient;

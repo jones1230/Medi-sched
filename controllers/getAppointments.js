@@ -1,28 +1,49 @@
 const appointments = require('../models/Appointment');
 
+/**
+ * @route GET /api/appointments
+ * @desc Retrieve all appointments
+ * @access Public
+ */
 const allAppointments = async (req, res) => {
     try {
+        // Retrieve all appointments
         const allAppointments = await appointments.find();
-        res.send(allAppointments);
+        res.status(200).json(allAppointments);
     } catch (error) {
-        res.send(error);
+        // Handle unexpected errors
+        res.status(500).json({ success: false, msg: 'Failed to retrieve appointments', error });
     }
 }
 
+/**
+ * @route GET /api/appointments/:id
+ * @desc Retrieve a single appointment by ID
+ * @access Public
+ */
 const oneAppointment = async (req, res) => {
     try {
         const id = req.params.id;
+        // Find appointment by ID
         const appointment = await appointments.findById(id);
-        if (appointment == undefined) {
-            return res.status(404).json({ success: false, msg: 'No appointment found'});
+
+        // If appointment not found, return 404
+        if (!appointment) {
+            return res.status(404).json({ success: false, msg: 'No appointment found' });
         }
-        return res.send(appointment);
+        
+        // Return appointment data
+        return res.status(200).json(appointment);
     } catch (error) {
         console.log(error.name);
-        if (error.name == 'CastError') {
-            return res.status(404).json({ success: false, msg: 'Invalid appointment id'});
+
+        // Handle specific errors
+        if (error.name === 'CastError') {
+            return res.status(400).json({ success: false, msg: 'Invalid appointment ID' });
         }
-        return res.status(404).json({ success: false, msg: error.name});
+
+        // Handle other errors
+        return res.status(500).json({ success: false, msg: 'Error retrieving appointment', error });
     }
 }
 
