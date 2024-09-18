@@ -6,13 +6,14 @@ const morgan = require('morgan');
 const Patients = require('./routes/Patients');
 const authStaff = require('./routes/Staff');
 const refreshTokenRoute = require('./routes/refreshTokenRoute');
+const logout = require('./routes/logout');
 
 app.use(express.json());
 dotenv.config();
 app.use(morgan('common'));
 
 app.use('/api', Patients);
-app.use('/api/auth', [ authStaff, refreshTokenRoute ]);
+app.use('/api/auth', [ authStaff, refreshTokenRoute, logout ]);
 
 mongodb_connect = async () => {
     await mongoose.connect(process.env.MONGODB_URI);

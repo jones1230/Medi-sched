@@ -6,9 +6,8 @@ require('dotenv').config();
 
 const generateToken = (user) => {
     const payload = { sub: user.id, name: user.name, roles: user.role, iat: Date.now() }
-    console.log(payload);
-    const token = jwt.sign(payload, process.env.SECRET_KEY, { expiresIn: '1m' });
-    const refreshToken = jwt.sign(payload, process.env.REFRESH_KEY);
+    const token = jwt.sign(payload, process.env.SECRET_KEY, { expiresIn: 1 });
+    const refreshToken = jwt.sign(payload, process.env.REFRESH_KEY, { expiresIn: '7d' });
     return { token, refreshToken }
 }
 
