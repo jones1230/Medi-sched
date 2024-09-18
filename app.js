@@ -7,12 +7,13 @@ const Patients = require('./routes/Patients');
 const authStaff = require('./routes/Staff');
 const refreshTokenRoute = require('./routes/refreshTokenRoute');
 const logout = require('./routes/logout');
+const bookAppointment = require('./routes/bookAppintment');
 
 app.use(express.json());
 dotenv.config();
 app.use(morgan('common'));
 
-app.use('/api', Patients);
+app.use('/api', [ Patients, bookAppointment ]);
 app.use('/api/auth', [ authStaff, refreshTokenRoute, logout ]);
 
 mongodb_connect = async () => {
