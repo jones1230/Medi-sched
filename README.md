@@ -1,6 +1,6 @@
 <p align="center">
   <a href="" rel="noopener">
-    <img width=200px height=200px src="https://www.github.com/jones1230/Medi-sched/logo.png" alt="Project logo">
+    <img width=200px height=200px src="https://github.com/jones1230/Medi-sched/blob/main/logo.png" alt="Project logo">
   </a>
 </p>
 
@@ -63,46 +63,29 @@ Clone the repository:
 ```bash
 git clone https://github.com/jones1230/Medi-sched.git
 cd Medi-sched
-
+```
 Install dependencies:
 
-bash
+```bash
 
 npm install
-
+```
 Set up your .env file with the following variables:
 
-makefile
-
+```bash
 SECRET_KEY=your_secret_key
 REFRESH_KEY=your_refresh_key
 MONGODB_URI=your_mongodb_connection_string
-
+PORT=PORT
+```
 Start the development server:
 
-bash
+```bash
 
-npm run dev
-
+npm start
+```
 To run the API locally, use http://localhost:3000.
 🔧 Running the tests <a name = "tests"></a>
-
-To run automated tests for the system:
-Break down into end-to-end tests
-
-The following test checks user authentication and basic CRUD operations:
-
-bash
-
-npm test
-
-Coding style tests
-
-Run lint checks to ensure code style consistency:
-
-arduino
-
-npm run lint
 
 🎈 Usage <a name="usage"></a>
 Endpoints
