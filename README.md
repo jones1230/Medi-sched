@@ -1,9 +1,9 @@
 <p align="center">
   <a href="" rel="noopener">
- <img width=200px height=200px src="https://i.imgur.com/6wj0hh6.jpg" alt="Project logo"></a>
+ <img width=200px height=200px src="app.logomakr.com/6iF4Ex" alt="Project logo"></a>
 </p>
 
-<h3 align="center">medi-sched</h3>
+<h3 align="center">Medi-sched</h3>
 
 <div align="center">
 
