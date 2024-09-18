@@ -96,7 +96,7 @@ The API will be available at `http://localhost:PORT`.
 - `GET /api/patients` - Retrieve all patients
 - `GET /api/patients/:id` - Retrieve a patient by ID
 - `POST /api/patients` - Create a new patient
-- `PUT /api/patients/:id` - Update patient data
+- `PATCH /api/patients/:id` - Update patient data
 - `DELETE /api/patients/:id` - Delete a patient
 
 #### Appointments
