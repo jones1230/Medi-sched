@@ -78,7 +78,7 @@ Make sure you have the following installed:
    SECRET_KEY=your_secret_key
    REFRESH_KEY=your_refresh_key
    MONGODB_URI=your_mongodb_connection_string
-   PORT=3000
+   PORT=your_PORT
    ```
 
 4. Start the development server:
@@ -86,7 +86,7 @@ Make sure you have the following installed:
    npm start
    ```
 
-The API will be available at `http://localhost:3000`.
+The API will be available at `http://localhost:PORT`.
 
 ## 🎈 Usage <a name="usage"></a>
 
@@ -143,6 +143,7 @@ Contributions, issues, and feature requests are welcome! See [CONTRIBUTING.md](C
 
 ## ✍️ Authors <a name = "authors"></a>
 
+-.[@mensahdaniel](https://github.com/mensahdaniel)
 - [@AlexAtivui](https://github.com/AlexAtivui)
 - [@jones1230](https://github.com/jones1230)
 
