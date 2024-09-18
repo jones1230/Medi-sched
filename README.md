@@ -64,13 +64,13 @@ Clone the repository:
 git clone https://github.com/jones1230/Medi-sched.git
 cd Medi-sched
 ```
-Install dependencies:
+### Install dependencies:
 
 ```bash
 
 npm install
 ```
-Set up your .env file with the following variables:
+### Set up your .env file with the following variables:
 
 ```bash
 SECRET_KEY=your_secret_key
@@ -78,7 +78,7 @@ REFRESH_KEY=your_refresh_key
 MONGODB_URI=your_mongodb_connection_string
 PORT=PORT
 ```
-Start the development server:
+### Start the development server:
 
 ```bash
 
@@ -87,9 +87,9 @@ npm start
 To run the API locally, use http://localhost:3000.
 🔧 Running the tests <a name = "tests"></a>
 
-🎈 Usage <a name="usage"></a>
-Endpoints
-Patients
+## 🎈 Usage <a name="usage"></a>
+### Endpoints
+#### Patients
 
     GET /api/patients - Retrieve all patients
     GET /api/patients/:id - Retrieve a patient by ID
@@ -97,24 +97,24 @@ Patients
     PUT /api/patients/:id - Update patient data
     DELETE /api/patients/:id - Delete a patient
 
-Appointments
+#### Appointments
 
     GET /api/appointments - Retrieve all appointments
     GET /api/appointments/:id - Retrieve an appointment by ID
     POST /api/appointments - Create a new appointment
     DELETE /api/appointments/:id - Delete an appointment
 
-Staff Authentication
+#### Staff Authentication
 
     POST /api/staff/signup - Sign up new hospital staff
     POST /api/staff/login - Log in staff and issue a token
     POST /api/staff/logout - Log out staff and blacklist token
 
-Refresh Token
+#### Refresh Token
 
     POST /api/refresh - Refresh JWT tokens using a refresh token
 
-🚀 Deployment <a name = "deployment"></a>
+## 🚀 Deployment <a name = "deployment"></a>
 
 To deploy Medi-sched on a live system, ensure you have Node.js and MongoDB configured on your server. Clone the repository, set environment variables, and use a process manager like PM2 to keep the app running.
 
@@ -124,7 +124,7 @@ bash
 
 pm2 start app.js
 
-⛏️ Built Using <a name = "built_using"></a>
+## ⛏️ Built Using <a name = "built_using"></a>
 
     MongoDB - Database
     Express - Server Framework
@@ -132,7 +132,7 @@ pm2 start app.js
     JWT - Token-based authentication
     bcrypt - Password hashing
 
-✍️ Authors <a name = "authors"></a>
+## ✍️ Authors <a name = "authors"></a>
 
     @jones1230 - Idea & Initial work
 
