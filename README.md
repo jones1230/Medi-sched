@@ -1,6 +1,7 @@
 <p align="center">
   <a href="" rel="noopener">
- <img width=200px height=200px src="app.logomakr.com/6iF4Ex" alt="Project logo"></a>
+    <img width=200px height=200px src="https://www.github.com/jones1230/Medi-sched/logo.png" alt="Project logo">
+  </a>
 </p>
 
 <h3 align="center">Medi-sched</h3>
@@ -9,15 +10,15 @@
 
 [![Status](https://img.shields.io/badge/status-active-success.svg)]()
 [![GitHub Issues](https://img.shields.io/github/issues/jones1230/Medi-sched.svg)](https://github.com/jones1230/Medi-sched/issues)
-[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/jones1230/Medi-sched.svg)](https://github.com/jones1230/Medi-schedpulls)
+[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/jones1230/Medi-sched.svg)](https://github.com/jones1230/Medi-sched/pulls)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
 
 </div>
 
 ---
 
-<p align="center"> Few lines describing your project.
-    <br> 
+<p align="center"> 
+  Medi-sched is an API designed for hospitals to handle patient registrations and appointment scheduling efficiently.
 </p>
 
 ## 📝 Table of Contents
@@ -34,80 +35,127 @@
 
 ## 🧐 About <a name = "about"></a>
 
-Write about 1-2 paragraphs describing the purpose of your project.
+Medi-sched is a full-stack API developed for hospital staff to manage patient registrations, update patient records, schedule appointments, and handle staff authentication. This system allows hospital administrators, doctors, and other staff to maintain a streamlined and secure workflow for outpatient department (OPD) operations.
+
+Features include:
+- Patient registration and data management (CRUD operations)
+- Appointment scheduling with doctors
+- Staff authentication with JWT and session management
+- Admin privileges for authorized staff
 
 ## 🏁 Getting Started <a name = "getting_started"></a>
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See [deployment](#deployment) for notes on how to deploy the project on a live system.
+To get a local copy of the project up and running for development and testing purposes, follow the instructions below.
 
 ### Prerequisites
 
-What things you need to install the software and how to install them.
+Make sure you have the following installed:
 
-```
-Give examples
-```
+Node.js MongoDB npm
+
+bash
+
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running.
+Clone the repository:
 
-Say what the step will be
+```bash
+git clone https://github.com/jones1230/Medi-sched.git
+cd Medi-sched
 
-```
-Give the example
-```
+Install dependencies:
 
-And repeat
+bash
 
-```
-until finished
-```
+npm install
 
-End with an example of getting some data out of the system or using it for a little demo.
+Set up your .env file with the following variables:
 
-## 🔧 Running the tests <a name = "tests"></a>
+makefile
 
-Explain how to run the automated tests for this system.
+SECRET_KEY=your_secret_key
+REFRESH_KEY=your_refresh_key
+MONGODB_URI=your_mongodb_connection_string
 
-### Break down into end to end tests
+Start the development server:
 
-Explain what these tests test and why
+bash
 
-```
-Give an example
-```
+npm run dev
 
-### And coding style tests
+To run the API locally, use http://localhost:3000.
+🔧 Running the tests <a name = "tests"></a>
 
-Explain what these tests test and why
+To run automated tests for the system:
+Break down into end-to-end tests
 
-```
-Give an example
-```
+The following test checks user authentication and basic CRUD operations:
 
-## 🎈 Usage <a name="usage"></a>
+bash
 
-Add notes about how to use the system.
+npm test
 
-## 🚀 Deployment <a name = "deployment"></a>
+Coding style tests
 
-Add additional notes about how to deploy this on a live system.
+Run lint checks to ensure code style consistency:
 
-## ⛏️ Built Using <a name = "built_using"></a>
+arduino
 
-- [MongoDB](https://www.mongodb.com/) - Database
-- [Express](https://expressjs.com/) - Server Framework
-- [NodeJs](https://nodejs.org/en/) - Server Environment
+npm run lint
 
-## ✍️ Authors <a name = "authors"></a>
+🎈 Usage <a name="usage"></a>
+Endpoints
+Patients
 
-- [@jones1230](https://github.com/jones1230) - Idea & Initial work
+    GET /api/patients - Retrieve all patients
+    GET /api/patients/:id - Retrieve a patient by ID
+    POST /api/patients - Create a new patient
+    PUT /api/patients/:id - Update patient data
+    DELETE /api/patients/:id - Delete a patient
 
-See also the list of [contributors](https://github.com/jones1230/Medi-Sched/contributors) who participated in this project.
+Appointments
 
-## 🎉 Acknowledgements <a name = "acknowledgement"></a>
+    GET /api/appointments - Retrieve all appointments
+    GET /api/appointments/:id - Retrieve an appointment by ID
+    POST /api/appointments - Create a new appointment
+    DELETE /api/appointments/:id - Delete an appointment
 
-- Hat tip to anyone whose code was used
-- Inspiration
-- References
+Staff Authentication
+
+    POST /api/staff/signup - Sign up new hospital staff
+    POST /api/staff/login - Log in staff and issue a token
+    POST /api/staff/logout - Log out staff and blacklist token
+
+Refresh Token
+
+    POST /api/refresh - Refresh JWT tokens using a refresh token
+
+🚀 Deployment <a name = "deployment"></a>
+
+To deploy Medi-sched on a live system, ensure you have Node.js and MongoDB configured on your server. Clone the repository, set environment variables, and use a process manager like PM2 to keep the app running.
+
+Example deployment setup:
+
+bash
+
+pm2 start app.js
+
+⛏️ Built Using <a name = "built_using"></a>
+
+    MongoDB - Database
+    Express - Server Framework
+    Node.js - Server Environment
+    JWT - Token-based authentication
+    bcrypt - Password hashing
+
+✍️ Authors <a name = "authors"></a>
+
+    @jones1230 - Idea & Initial work
+
+See also the list of contributors who participated in this project.
+🎉 Acknowledgements <a name = "acknowledgement"></a>
+
+    Hat tip to anyone whose code was used
+    ALX for inspiration
+    StackOverflow for bug fixes
