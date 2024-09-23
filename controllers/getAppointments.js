@@ -1,3 +1,4 @@
+const Staff = require('../models/HospitalStaff');
 const appointments = require('../models/Appointment');
 
 /**
@@ -5,7 +6,13 @@ const appointments = require('../models/Appointment');
  * @desc Retrieve all appointments
  * @access Public
  */
+
+
 const allAppointments = async (req, res) => {
+    let staff = await Staff.findById(req.User.sub);
+    if (req.User.sub != staff.id && req.User.roles != 'Doctor') {
+        return res.status(401).json({ success: false, msg: 'You are not allowed to view all appointments!'});
+    }
     try {
         // Retrieve all appointments
         const allAppointments = await appointments.find();

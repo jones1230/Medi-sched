@@ -4,6 +4,12 @@ const createAppointment = require('../controllers/postAppointment'); // Import c
 const deleteAppointment = require('../controllers/deleteAppointment'); // Import controller function to delete an appointment
 const router = express.Router(); // Create a new Express router
 
+// Middleware for authenticating hospital staff
+const staffAuthentication = require('../middleware/auth');
+
+// Comment this if you dont want to apply authentication to all patient-related routes
+router.use('/bookappointments', staffAuthentication);
+
 // Route to get all appointments
 router.get('/bookappointments', allAppointments);
 

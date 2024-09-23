@@ -10,7 +10,7 @@ const deletePatient = require('../controllers/deletePatient');
 // Middleware for authenticating hospital staff
 const staffAuthentication = require('../middleware/auth');
 
-// Uncomment this if you want to apply authentication to all patient-related routes
+// Comment this if you dont want to apply authentication to all patient-related routes
 router.use('/patients', staffAuthentication);
 
 // Route to get all patients (protected by staff authentication)

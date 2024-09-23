@@ -10,8 +10,7 @@ const AppointmentSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    appointment_date: Date,
-    appointment_time: Date,
+    appointment_date_and_time: Date,
     appointment_type: String,
     reason_for_visit: String,
 }, { timestamps: true }); // Automatically add createdAt and updatedAt timestamps
