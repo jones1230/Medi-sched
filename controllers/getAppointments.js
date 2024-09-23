@@ -9,9 +9,9 @@ const appointments = require('../models/Appointment');
 
 
 const allAppointments = async (req, res) => {
-    let staff = await Staff.findById(req.User.sub);
-    if (req.User.sub != staff.id && req.User.roles != 'Doctor') {
-        return res.status(401).json({ success: false, msg: 'You are not allowed to view all appointments!'});
+    if (req.User.sub == req.staff.id && req.role === 'Doctor') {
+        const allAppointments = await appointments.find({ doctor_email: req.staff.email });
+        return res.status(200).send(allAppointments);
     }
     try {
         // Retrieve all appointments

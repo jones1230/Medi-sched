@@ -8,6 +8,10 @@ const appointment = require('../models/Appointment');
  * @returns {void}
  */
 const deleteAppointment = async (req, res) => {
+    if (req.role === 'Doctor') {
+        return res.status(401).json({ success: false, msg: 'You are not allowed to delete an appointment' });
+    }
+
     try {
         // Extract appointment ID from request parameters
         const { id } = req.params;
