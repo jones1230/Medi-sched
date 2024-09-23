@@ -143,7 +143,7 @@ Contributions, issues, and feature requests are welcome! See [CONTRIBUTING.md](C
 
 ## ✍️ Authors <a name = "authors"></a>
 
--.[@mensahdaniel](https://github.com/mensahdaniel)
+- [@mensahdaniel](https://github.com/mensahdaniel)
 - [@AlexAtivui](https://github.com/AlexAtivui)
 - [@jones1230](https://github.com/jones1230)
 

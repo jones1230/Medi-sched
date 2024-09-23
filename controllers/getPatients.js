@@ -13,15 +13,9 @@ const getPatients = async (req, res) => {
         // Retrieve staff information based on user ID
         let staff = await Staff.findById(req.User.sub);
 
-        // Check if the user is the staff member and has Admin role
-        if (req.User.sub === staff.id && req.User.roles == 'Admin') {
-            console.log('Get /api/patients request success...');
-            return res.status(200).json(patients);
-        }
+        // Responds with patients
+        res.status(200).json(patients);
 
-        // Unauthorized access
-        console.log(req.User.roles);
-        res.status(401).json({ success: false, msg: 'You are not an Admin' });
     } catch (err) {
         // Handle unexpected errors
         res.status(500).json({ success: false, msg: 'Server error' });

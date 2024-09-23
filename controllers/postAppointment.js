@@ -5,7 +5,12 @@ const appointment = require('../models/Appointment');
  * @desc Create a new appointment
  * @access Public
  */
+
 const createAppointment = async (req, res) => {
+    if (req.role === 'Doctor') {
+        return res.status(401).json({ success: false, msg: 'You are not allowed to create an appointment' });
+    }
+
     const {
         patient_email,
         doctor_email,
