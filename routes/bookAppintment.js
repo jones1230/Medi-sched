@@ -10,18 +10,18 @@ const router = express.Router(); // Create a new Express router
 const staffAuthentication = require('../middleware/auth');
 
 // Comment this if you dont want to apply authentication to all patient-related routes
-router.use('/bookappointments', staffAuthentication);
+router.use('/appointments', staffAuthentication);
 
 // Route to get all appointments
-router.get('/bookappointments', staffRoleMiddleware, allAppointments);
+router.get('/appointments', staffRoleMiddleware, allAppointments);
 
 // Route to get a specific appointment by ID
-router.get('/bookappointments/:id', oneAppointment);
+router.get('/appointments/:id', oneAppointment);
 
 // Route to create a new appointment
-router.post('/bookappointments', staffRoleMiddleware, createAppointment);
+router.post('/appointments', staffRoleMiddleware, createAppointment);
 
 // Route to delete an appointment by ID
-router.delete('/bookappointments/:id', staffRoleMiddleware, deleteAppointment);
+router.delete('/appointments/:id', staffRoleMiddleware, deleteAppointment);
 
 module.exports = router; // Export the router for use in the main application

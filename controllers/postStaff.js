@@ -1,5 +1,7 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const mongoose = require('mongoose');
+const { v4:uuidv4 } = require('uuid');
 const Staff = require('../models/HospitalStaff');
 require('dotenv').config();
 
@@ -37,6 +39,7 @@ const signUpStaff = async (req, res) => {
 
         // Create and save new staff member
         const newStaff = new Staff({
+            _id: uuidv4(),
             name: req.body.name,
             gender: req.body.gender,
             dob: req.body.dob,

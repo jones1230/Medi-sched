@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 
 // Define the schema for the Hospital Staff collection
 const HospitalStaffSchema = new mongoose.Schema({
+    _id: mongoose.Types.UUID,
     name: { type: String, required: true }, // Staff member's name
     gender: { type: String, required: true }, // Staff member's gender
     dob: { type: Date, required: true }, // Staff member's date of birth

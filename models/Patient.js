@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 
 // Define the schema for the Patient collection
 const patientSchema = new mongoose.Schema({
+    _id: mongoose.Types.UUID,
     name: { type: String, required: true }, // Patient's name
     age: { type: Number, required: true }, // Patient's age
     gender: { type: String, required: true }, // Patient's gender

@@ -10,6 +10,7 @@ const authStaff = require('./routes/Staff');
 const refreshTokenRoute = require('./routes/refreshTokenRoute');
 const logout = require('./routes/logout');
 const bookAppointment = require('./routes/bookAppintment');
+const forgotPassword = require('./routes/forgotPassword');
 
 // Middleware to parse incoming JSON requests
 app.use(express.json());
@@ -21,10 +22,10 @@ dotenv.config();
 app.use(morgan('common'));
 
 // Register routes for patient and appointment-related operations
-app.use('/api', [Patients, bookAppointment]);
+app.use('/api/v1', [Patients, bookAppointment]);
 
 // Register routes for staff authentication, token refresh, and logout
-app.use('/api/auth', [authStaff, refreshTokenRoute, logout]);
+app.use('/api/v1/auth', [authStaff, refreshTokenRoute, logout, forgotPassword]);
 
 // Function to establish MongoDB connection using Mongoose
 mongodb_connect = async () => {
