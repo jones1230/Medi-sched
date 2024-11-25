@@ -1,22 +1,21 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const dotenv = require('dotenv');
+import express from 'express';
+import mongoose from 'mongoose';
+import morgan from 'morgan';
+import dotenv from 'dotenv';
+dotenv.config();
 const app = express();
-const morgan = require('morgan');
+
 
 // Import route handlers for different endpoints
-const Patients = require('./routes/Patients');
-const authStaff = require('./routes/Staff');
-const refreshTokenRoute = require('./routes/refreshTokenRoute');
-const logout = require('./routes/logout');
-const bookAppointment = require('./routes/bookAppintment');
-const forgotPassword = require('./routes/forgotPassword');
+import Patients from './routes/Patients.js';
+import authStaff from './routes/Staff.js';
+import refreshTokenRoute from './routes/refreshTokenRoute.js';
+import logout from './routes/logout.js';
+import bookAppointment from './routes/bookAppintment.js';
+import forgotPassword from './routes/forgotPassword.js';
 
 // Middleware to parse incoming JSON requests
 app.use(express.json());
-
-// Load environment variables from .env file
-dotenv.config();
 
 // Logger middleware for HTTP requests
 app.use(morgan('common'));
@@ -28,14 +27,8 @@ app.use('/api/v1', [Patients, bookAppointment]);
 app.use('/api/v1/auth', [authStaff, refreshTokenRoute, logout, forgotPassword]);
 
 // Function to establish MongoDB connection using Mongoose
-mongodb_connect = async () => {
-  await mongoose.connect(process.env.MONGODB_URI); // Connect to MongoDB with the URI from environment variables
-};
 
-// Connect to MongoDB and log success message if connected
-mongodb_connect().then(() => {
-  console.log('Database is connected');
-});
+mongoose.connect(process.env.MONGODB_URI).then(() => console.log('Connected to database...'));
 
 // Start the Express server on the specified port
 app.listen(process.env.PORT, () => {

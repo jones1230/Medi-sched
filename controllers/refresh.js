@@ -1,6 +1,8 @@
-const { verify } = require('jsonwebtoken');
-const { generateToken } = require('./postStaff');
-require('dotenv').config();
+import jwt from 'jsonwebtoken';
+const { verify } = jwt;
+import { generateToken } from './postStaff.js';
+import dotenv from 'dotenv';
+dotenv.config();
 
 /**
  * @route POST /api/refresh
@@ -31,4 +33,4 @@ const refresh = (req, res) => {
     }
 }
 
-module.exports = refresh;
+export default refresh;

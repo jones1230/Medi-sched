@@ -1,4 +1,4 @@
-const appointment = require('../models/Appointment');
+import appointment from '../models/Appointment.js';
 
 /**
  * Delete an appointment by ID
@@ -32,4 +32,4 @@ const deleteAppointment = async (req, res) => {
     }
 }
 
-module.exports = deleteAppointment;
+export default deleteAppointment;

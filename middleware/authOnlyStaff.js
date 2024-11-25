@@ -1,4 +1,4 @@
-const Staff = require('../models/HospitalStaff');
+import Staff from '../models/HospitalStaff.js';
 
 const authOnlyStaff = async (req, res, next) => {
     const staff = await Staff.findById(req.User.sub);
@@ -8,4 +8,4 @@ const authOnlyStaff = async (req, res, next) => {
     next();
 }
 
-module.exports = authOnlyStaff;
+export default authOnlyStaff;

@@ -1,6 +1,7 @@
-const jwt = require('jsonwebtoken');
-const blacklistedTokens = require('../models/blacklistTokens');
-require('dotenv').config();
+import jwt from 'jsonwebtoken';
+import blacklistedTokens from '../models/blacklistTokens.js';
+import dotenv from 'dotenv';
+dotenv.config();
 
 /**
  * Middleware to authenticate staff using JWT
@@ -41,4 +42,4 @@ const staffAuthentication = async (req, res, next) => {
     }
 }
 
-module.exports = staffAuthentication;
+export default staffAuthentication;

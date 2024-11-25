@@ -1,4 +1,4 @@
-const blacklistedTokens = require('../models/blacklistTokens');
+import  blacklistedTokens from '../models/blacklistTokens.js';
 
 /**
  * @route POST /api/logout
@@ -30,4 +30,4 @@ const logout = async (req, res) => {
     }
 }
 
-module.exports = logout;
+export default logout;

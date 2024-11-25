@@ -1,13 +1,13 @@
-const express = require('express');
-const { allAppointments, oneAppointment } = require('../controllers/getAppointments'); // Import controller functions to get all appointments and a single appointment
-const createAppointment = require('../controllers/postAppointment'); // Import controller function to create a new appointment
-const deleteAppointment = require('../controllers/deleteAppointment'); // Import controller function to delete an appointment
-const staffRoleMiddleware = require('../middleware/authStaffAndDoctors');
+import express from 'express';
+import { allAppointments, oneAppointment } from '../controllers/getAppointments.js';
+import createAppointment from '../controllers/postAppointment.js'; // Import controller function to create a new appointment
+import deleteAppointment from '../controllers/deleteAppointment.js'; // Import controller function to delete an appointment
+import staffRoleMiddleware from '../middleware/authStaffAndDoctors.js';
 
 const router = express.Router(); // Create a new Express router
 
 // Middleware for authenticating hospital staff
-const staffAuthentication = require('../middleware/auth');
+import staffAuthentication from '../middleware/auth.js';
 
 // Comment this if you dont want to apply authentication to all patient-related routes
 router.use('/appointments', staffAuthentication);
@@ -24,4 +24,4 @@ router.post('/appointments', staffRoleMiddleware, createAppointment);
 // Route to delete an appointment by ID
 router.delete('/appointments/:id', staffRoleMiddleware, deleteAppointment);
 
-module.exports = router; // Export the router for use in the main application
+export default router; // Export the router for use in the main application

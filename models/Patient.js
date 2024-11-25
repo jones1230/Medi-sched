@@ -1,8 +1,7 @@
-const mongoose = require('mongoose');
+import { Schema, model } from 'mongoose';
 
 // Define the schema for the Patient collection
-const patientSchema = new mongoose.Schema({
-    _id: mongoose.Types.UUID,
+const patientSchema = new Schema({
     name: { type: String, required: true }, // Patient's name
     age: { type: Number, required: true }, // Patient's age
     gender: { type: String, required: true }, // Patient's gender
@@ -23,4 +22,4 @@ const patientSchema = new mongoose.Schema({
 }, { timestamps: true }) // Automatically adds createdAt and updatedAt timestamps
 
 // Export the Patient model based on the schema
-module.exports = mongoose.model("Patient", patientSchema);
+export default model("Patient", patientSchema);

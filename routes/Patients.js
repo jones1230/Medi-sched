@@ -1,15 +1,15 @@
-const express = require('express');
+import express from 'express';
 const router = express.Router();
 
 // Import controller functions for handling patient-related operations
-const { getPatients, getPatientById } = require('../controllers/getPatients');
-const postPatient = require('../controllers/postPatient');
-const updatePatientData = require('../controllers/patchPatient');
-const deletePatient = require('../controllers/deletePatient');
+import { getPatients, getPatientById } from '../controllers/getPatients.js';
+import postPatient from '../controllers/postPatient.js';
+import updatePatientData from '../controllers/patchPatient.js';
+import deletePatient from '../controllers/deletePatient.js';
 
 // Middleware for authenticating hospital staff
-const staffAuthentication = require('../middleware/auth');
-const authOnlyStaff = require('../middleware/authOnlyStaff');
+import staffAuthentication from '../middleware/auth.js';
+import authOnlyStaff from '../middleware/authOnlyStaff.js';
 
 // Comment this if you dont want to apply authentication to all patient-related routes
 router.use('/patients', [ staffAuthentication, authOnlyStaff ]);
@@ -29,4 +29,4 @@ router.patch('/patients/:id', updatePatientData);
 // Route to delete a patient entry
 router.delete('/patients/:id', deletePatient);
 
-module.exports = router;
+export default router;

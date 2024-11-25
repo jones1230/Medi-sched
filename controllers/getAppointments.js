@@ -1,5 +1,4 @@
-const Staff = require('../models/HospitalStaff');
-const appointments = require('../models/Appointment');
+import appointments from '../models/Appointment.js';
 
 /**
  * @route GET /api/appointments
@@ -8,7 +7,7 @@ const appointments = require('../models/Appointment');
  */
 
 
-const allAppointments = async (req, res) => {
+export const allAppointments = async (req, res) => {
     if (req.User.sub == req.staff.id && req.role === 'Doctor') {
         const allAppointments = await appointments.find({ doctor_email: req.staff.email });
         return res.status(200).send(allAppointments);
@@ -28,7 +27,7 @@ const allAppointments = async (req, res) => {
  * @desc Retrieve a single appointment by ID
  * @access Public
  */
-const oneAppointment = async (req, res) => {
+export const oneAppointment = async (req, res) => {
     try {
         const id = req.params.id;
         // Find appointment by ID
@@ -53,5 +52,3 @@ const oneAppointment = async (req, res) => {
         return res.status(500).json({ success: false, msg: 'Error retrieving appointment', error });
     }
 }
-
-module.exports = { allAppointments, oneAppointment };

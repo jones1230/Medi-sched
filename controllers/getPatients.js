@@ -1,12 +1,12 @@
-const Patient = require('../models/Patient');
-const Staff = require('../models/HospitalStaff');
+import Patient from '../models/Patient.js';
+import Staff from '../models/HospitalStaff.js';
 
 /**
  * @route GET /api/patients
  * @desc Retrieve all patients
  * @access Admin only
  */
-const getPatients = async (req, res) => {
+export const getPatients = async (req, res) => {
     try {
         // Retrieve all patients
         let patients = await Patient.find();
@@ -27,7 +27,7 @@ const getPatients = async (req, res) => {
  * @desc Retrieve a patient by ID
  * @access Public
  */
-const getPatientById = async (req, res) => {
+export const getPatientById = async (req, res) => {
     try {
         const patientId = req.params.id;
         // Find patient by ID
@@ -45,5 +45,3 @@ const getPatientById = async (req, res) => {
         res.status(500).json({ success: false, msg: 'Patient query failed' });
     }
 }
-
-module.exports = { getPatients, getPatientById };

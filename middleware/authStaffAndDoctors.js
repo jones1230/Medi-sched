@@ -1,4 +1,4 @@
-const HospitalStaff = require('../models/HospitalStaff');
+import HospitalStaff from '../models/HospitalStaff.js';
 
 const verifyRole = async (req, res, next) => {
    try {
@@ -16,4 +16,4 @@ const verifyRole = async (req, res, next) => {
    }
 }
 
-module.exports = verifyRole;
+export default verifyRole;

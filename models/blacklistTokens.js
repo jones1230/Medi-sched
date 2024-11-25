@@ -1,8 +1,8 @@
-const mongoose = require('mongoose');
-const hospitalStaffSchema = require('./HospitalStaff');
+import { Schema, model } from 'mongoose';
+import hospitalStaffSchema from './HospitalStaff.js';
 
 // Define the schema for blacklisted tokens
-const blacklistedTokens = new mongoose.Schema({
+const blacklistedTokens = new Schema({
     token: {
         type: String,
         required: true, // The token to be blacklisted
@@ -11,4 +11,4 @@ const blacklistedTokens = new mongoose.Schema({
 }, { timestamps: true }) // Automatically adds createdAt and updatedAt timestamps
 
 // Export the blacklistedTokens model based on the schema
-module.exports = mongoose.model('blacklistedTokens', blacklistedTokens);
+export default model('blacklistedTokens', blacklistedTokens);

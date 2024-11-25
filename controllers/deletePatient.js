@@ -1,4 +1,4 @@
-const Patient = require('../models/Patient');
+import Patient from '../models/Patient.js';
 
 /**
  * @route DELETE /api/patients/:id
@@ -26,4 +26,4 @@ const deletePatient = async (req, res) => {
     }
 }
 
-module.exports = deletePatient;
+export default deletePatient;

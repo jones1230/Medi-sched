@@ -1,4 +1,4 @@
-const appointment = require('../models/Appointment');
+import appointment from '../models/Appointment.js';
 
 /**
  * @route POST /api/appointments
@@ -42,4 +42,4 @@ const createAppointment = async (req, res) => {
     }
 }
 
-module.exports = createAppointment;
+export default createAppointment;

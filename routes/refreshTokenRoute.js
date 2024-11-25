@@ -1,10 +1,10 @@
-const express = require('express');
-const router = express.Router();
+import { Router } from 'express';
+const router = Router();
 
 // Import the controller function responsible for refreshing tokens
-const refresh = require('../controllers/refresh');
+import refresh from '../controllers/refresh.js';
 
 // Route to handle token refresh requests
 router.post('/refresh', refresh);
 
-module.exports = router; // Export the router to be used in the main application
+export default router; // Export the router to be used in the main application

@@ -1,6 +1,4 @@
-const Patient = require('../models/Patient');
-const mongoose = require('mongoose');
-const { v4:uuidv4 } = require('uuid');
+import Patient from '../models/Patient.js';
 
 /**
  * @route POST /api/patients
@@ -11,7 +9,6 @@ const postPatient = async (req, res) => {
     try {
         // Create a new patient instance with data from the request body
         const newPatient = new Patient({
-            _id: uuidv4(),
             name: req.body.name,
             gender: req.body.gender,
             dob: req.body.dob,
@@ -44,4 +41,4 @@ const postPatient = async (req, res) => {
     }
 }
 
-module.exports = postPatient;
+export default postPatient;

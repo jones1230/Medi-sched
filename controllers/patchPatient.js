@@ -1,4 +1,4 @@
-const Patient = require('../models/Patient');
+import Patient from '../models/Patient.js';
 
 /**
  * @route PUT /api/patients/:id
@@ -30,4 +30,4 @@ const updatePatientData = async (req, res) => {
     }
 }
 
-module.exports = updatePatientData;
+export default updatePatientData;

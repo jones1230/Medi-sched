@@ -1,7 +1,7 @@
-const mongoose = require('mongoose');
+import { Schema, model } from 'mongoose';
 
 // Define the schema for the appointment collection
-const AppointmentSchema = new mongoose.Schema({
+const AppointmentSchema = new Schema({
     patient_email: {
         type: String,
         required: true
@@ -16,4 +16,4 @@ const AppointmentSchema = new mongoose.Schema({
 }, { timestamps: true }); // Automatically add createdAt and updatedAt timestamps
 
 // Export the model based on the schema
-module.exports = mongoose.model('AppointmentSchema', AppointmentSchema);
+export default model('AppointmentSchema', AppointmentSchema);
