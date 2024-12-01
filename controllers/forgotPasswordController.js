@@ -37,10 +37,14 @@ export const resetPassword = async (req, res) => {
         const { userId, token } = req.params;
         const { newPassword } = req.body;
         const user = await Staff.findById(userId);
-        if(user === undefined) {
-            res.status(401).json({success: false, msg: 'No user exist for this link'});
+        const verifyToken = await Token.find({ token });
+        if(user === undefined && verifyToken === undefined) {
+            res.status(401).json({success: false, msg: 'Invalid reset link'});
         }
-        res.status(200).send(user);
+        console.log('Error here');
+        const updatedUser = await Staff.findByIdAndUpdate({_id: userId}, {password: newPassword}, {new: true});
+        console.log(updatedUser);
+        res.status(200).json({success: true, msg: 'Password updated successfully'});
     } catch (error) {
         console.error;
         res.end;
